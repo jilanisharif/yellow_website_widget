@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="icon"
+      href="https://yellow.ai/wp-content/themes/yellow.ai/favicon/favicon.ico?v=1"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="yellow widget" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <title>Widget</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      window.ymConfig = {
+        bot: "",
+        host: "https://cloud.yellow.ai",
+        payload: {},
+      };
+      (function () {
+        var w = window,
+          ic = w.YellowMessenger;
+        if ("function" === typeof ic)
+          ic("reattach_activator"), ic("update", ymConfig);
+        else {
+          var d = document,
+            i = function () {
+              i.c(arguments);
+            };
+          function l() {
+            var e = d.createElement("script");
+            (e.type = "text/javascript"),
+              (e.async = !0),
+              (e.src =
+                "https://cdn.yellowmessenger.com/plugin/widget-v2/latest/dist/main.min.js");
+            var t = d.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(e, t);
+          }
+          (i.q = []),
+            (i.c = function (e) {
+              i.q.push(e);
+            }),
+            (w.YellowMessenger = i),
+            w.attachEvent
+              ? w.attachEvent("onload", l)
+              : w.addEventListener("load", l, !1);
+        }
+      })();
+    </script>
+
+    <div id="root"></div>
+  </body>
+</html>
