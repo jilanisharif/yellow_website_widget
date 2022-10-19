@@ -19,15 +19,18 @@ const HTMLWebsite = () => {
       ).then((url) => {
         (async () => {
           try {
-            const response = await fetch("/data", {
-              mode: "cors",
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ url }),
-            });
+            const response = await fetch(
+              "https://blooming-river-96863.herokuapp.com/data",
+              {
+                mode: "cors",
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ url }),
+              }
+            );
             const htmlText = await response.json();
             setHtmlText(htmlText);
             window.ymConfig.bot = botId;

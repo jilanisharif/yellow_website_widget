@@ -72,15 +72,18 @@ const RightContainer = () => {
           try {
             setSpin(true);
             let body = { url };
-            const response = await fetch("/data", {
-              mode: "cors",
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(body),
-            });
+            const response = await fetch(
+              "https://blooming-river-96863.herokuapp.com/data",
+              {
+                mode: "cors",
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(body),
+              }
+            );
             const data = await response.json();
             // const response = await fetch(url, requestOptions);
             const htmlText = await data;
