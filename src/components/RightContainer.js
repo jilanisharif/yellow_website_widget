@@ -72,15 +72,16 @@ const RightContainer = () => {
           try {
             setSpin(true);
             let body = { url };
+            console.log(body, "BODY");
             const response = await fetch(
-              "https://blooming-river-96863.herokuapp.com/data",
+              "https://blooming-river-96863.herokuapp.com",
+              // "http://localhost:8000",
               {
                 mode: "cors",
                 method: "POST",
                 headers: {
                   "Access-Control-Allow-Origin": "*",
-                  "Access-Control-Allow-Methods":
-                    "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+                  "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body),
               }

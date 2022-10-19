@@ -20,11 +20,15 @@ const HTMLWebsite = () => {
         (async () => {
           try {
             const response = await fetch(
-              "https://blooming-river-96863.herokuapp.com/data",
+              "https://blooming-river-96863.herokuapp.com",
+              // "http://localhost:8000",
+
               {
                 mode: "cors",
                 method: "POST",
                 headers: {
+                  "Content-Type": "application/json",
+
                   "Access-Control-Allow-Origin": "*",
                   "Access-Control-Allow-Methods":
                     "GET,PUT,POST,DELETE,PATCH,OPTIONS",

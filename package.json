@@ -12,6 +12,7 @@
     "firebase": "^9.12.0",
     "fs": "^0.0.1-security",
     "git": "^0.1.5",
+    "got": "^12.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.4.2",
@@ -26,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy":"https://blooming-river-96863.herokuapp.com",
+  "proxy": "https://blooming-river-96863.herokuapp.com",
   "eslintConfig": {
     "extends": [
       "react-app",
