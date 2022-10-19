@@ -19,7 +19,7 @@ const HTMLWebsite = () => {
       ).then((url) => {
         (async () => {
           try {
-            const response = await fetch("http://localhost:8000/data", {
+            const response = await fetch("/data", {
               mode: "cors",
               method: "POST",
               headers: {
@@ -29,7 +29,6 @@ const HTMLWebsite = () => {
               body: JSON.stringify({ url }),
             });
             const htmlText = await response.json();
-            console.log(htmlText, "HTML TEXT");
             setHtmlText(htmlText);
             window.ymConfig.bot = botId;
             var d = document;

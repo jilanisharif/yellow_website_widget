@@ -72,8 +72,7 @@ const RightContainer = () => {
           try {
             setSpin(true);
             let body = { url };
-            console.log(body, "BODY TO SEND");
-            const response = await fetch("http://localhost:8000/data", {
+            const response = await fetch("/data", {
               mode: "cors",
               method: "POST",
               headers: {
@@ -83,7 +82,6 @@ const RightContainer = () => {
               body: JSON.stringify(body),
             });
             const data = await response.json();
-            console.log(data, "DATA");
             // const response = await fetch(url, requestOptions);
             const htmlText = await data;
             if (htmlText) {
