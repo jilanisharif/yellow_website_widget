@@ -61,15 +61,6 @@ const RightContainer = () => {
       } else if (!checkUrl(websiteUrl)) {
         return setError("URL is not valid");
       } else {
-        var requestOptions = {
-          method: "GET",
-          "Access-Control-Allow-Origin": "*",
-          redirect: "follow",
-          "Access-Control-Allow-Methods": "GET",
-          "Content-Security-Policy": "self",
-          // mode: "no-cors",
-        };
-
         (async () => {
           let url;
 
@@ -78,24 +69,40 @@ const RightContainer = () => {
           } else if (websiteUrl.startsWith("www")) {
             url = `https://${websiteUrl}`;
           } else url = `https://www.${websiteUrl}`;
-
-          const response = await fetch(url, requestOptions);
-          const htmlText = await response.text();
-          if (htmlText) {
+          try {
             setSpin(true);
-            const fileName = v4() + "&&" + botId;
-            const blob = new Blob([htmlText], { type: "text/plain" });
-            const htmlReference = ref(
-              storage,
-              `yellow-widget-html/${fileName}`
-            );
-
-            uploadBytes(htmlReference, blob).then((response) => {
-              navigate("/website/html/" + response.metadata.name);
-              setSpin(false);
+            let body = { url };
+            console.log(body, "BODY TO SEND");
+            const response = await fetch("http://localhost:8000/data", {
+              mode: "cors",
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(body),
             });
-          } else {
-            return setError("URL is not valid");
+            const data = await response.json();
+            console.log(data, "DATA");
+            // const response = await fetch(url, requestOptions);
+            const htmlText = await data;
+            if (htmlText) {
+              const fileName = v4() + "&&" + botId;
+              const blob = new Blob([htmlText], { type: "text/plain" });
+              const htmlReference = ref(
+                storage,
+                `yellow-widget-html/${fileName}`
+              );
+
+              uploadBytes(htmlReference, blob).then((response) => {
+                navigate("/website/html/" + response.metadata.name);
+                setSpin(false);
+              });
+            } else {
+              return setError("URL is not valid");
+            }
+          } catch (error) {
+            console.log(error, "ERROR");
           }
         })();
       }
