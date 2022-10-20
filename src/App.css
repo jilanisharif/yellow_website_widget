@@ -81,10 +81,10 @@ img {
 .right-container-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   /* align-items: flex-start; */
   background-color: #f1faff;
-  padding: 10px 40px;
+  padding: 60px 50px 10px;
   width: 70%;
 }
 
