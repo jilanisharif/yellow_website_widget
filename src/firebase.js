@@ -8,12 +8,12 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBQVPLoWgsbwyyHEIJDO6kzIC04uV-5EkY",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "yellow-web-widget-generator.firebaseapp.com",
   projectId: "yellow-web-widget-generator",
   storageBucket: "yellow-web-widget-generator.appspot.com",
-  messagingSenderId: "1054618723753",
-  appId: "1:1054618723753:web:4ab2e82c8b07d3222610b8",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: "G-YBL5V34C7C",
 };
 
